@@ -24,7 +24,6 @@ import { StatusModule } from './modules/status/status.module';
 import { WinnerModule } from './modules/winner/winner.module';
 // import { PrizeValueModule } from './modules/prize-value/prize-value.module';
 import { NotificationModule } from './modules/notification/notification.module';
-import { GggModule } from './ggg/ggg.module';
 import ORMOptionsProvider from 'src/configs/mikro-orm.config';
 
 @Module({
@@ -54,7 +53,6 @@ import ORMOptionsProvider from 'src/configs/mikro-orm.config';
     WinnerModule,
     // PrizeValueModule,
     NotificationModule,
-    GggModule,
   ],
   controllers: [],
   providers: [],
