@@ -1,9 +1,9 @@
 import { EntityManager, MikroORM } from '@mikro-orm/core';
 import { DynamicModule, Global, Module, Provider } from '@nestjs/common';
 import { ConfigModule, ConfigModuleOptions, ConfigService } from '@nestjs/config';
-import { Config } from 'src/modules/mikroorm/entities/Config';
 import { TranslatableConfig } from 'src/types/interfaces';
 import { City } from '../mikroorm/entities/City';
+import { Config } from '../mikroorm/entities/Config';
 import { Promo } from '../mikroorm/entities/Promo';
 import { AppConfigService } from './app-config.service';
 

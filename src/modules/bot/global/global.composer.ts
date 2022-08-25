@@ -118,7 +118,10 @@ export class globalComposer extends BaseComposer {
     async (ctx: BotContext) => {
       await this.globalService.updateUser(ctx.from.id, { credentials: ctx.message.text });
       ctx.session.step = BotStep.phone;
-      await ctx.reply(ctx.i18n.t('askPhone'), {
+      // await ctx.reply(ctx.i18n.t('askPhone'), {
+      //   reply_markup: new Keyboard().requestContact(ctx.i18n.t('contact')),
+      // });
+      await ctx.replyWithPhoto(this.AppConfigService.get('url') + `assets/phone_${ctx.i18n.locale()}.png`, {
         reply_markup: new Keyboard().requestContact(ctx.i18n.t('contact')),
       });
     },
