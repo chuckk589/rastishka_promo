@@ -32,7 +32,7 @@ export class globalComposer extends BaseComposer {
             await this.globalService.updateUser(ctx.from.id, { locale: lang as Locale });
             ctx.i18n.locale(lang);
             ctx.session.step = BotStep.age;
-            await ctx.editMessageCaption({ caption: ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askAge') });
+            await ctx.editMessageText(ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askAge'));
           }),
         );
         break;
@@ -40,7 +40,7 @@ export class globalComposer extends BaseComposer {
       case BotStep.age: {
         range.text(label({ text: 'yes' }), async (ctx) => {
           ctx.session.step = BotStep.gender;
-          await ctx.editMessageCaption({ caption: ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askGender') });
+          await ctx.editMessageText(ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askGender'));
         });
         range.text(label({ text: 'no' }), async (ctx) => {
           ctx.session.step = BotStep.default;
@@ -55,7 +55,7 @@ export class globalComposer extends BaseComposer {
           range.text(label({ text: gender }), async (ctx) => {
             ctx.session.step = BotStep.city;
             await this.globalService.updateUser(ctx.from.id, { gender: gender });
-            await ctx.editMessageCaption({ caption: ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askCity') });
+            await ctx.editMessageText(ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askCity'));
           });
         });
         break;
@@ -65,7 +65,7 @@ export class globalComposer extends BaseComposer {
           range.text(label({ text: city.translation[locale] }), async (ctx) => {
             ctx.session.step = BotStep.promo;
             await this.globalService.updateCity(ctx.from.id, city.id);
-            await ctx.editMessageCaption({ caption: ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askPromo') });
+            await ctx.editMessageText(ctx.i18n.t('start') + '\n\n' + ctx.i18n.t('askPromo'));
           }),
             index % 3 === 0 && range.row();
         });
@@ -77,7 +77,7 @@ export class globalComposer extends BaseComposer {
             await this.globalService.updatePromo(ctx.from.id, promo.id);
             ctx.session.step = BotStep.name;
             ctx.menu.close();
-            await ctx.editMessageCaption({ caption: ctx.i18n.t('start') });
+            await ctx.editMessageText(ctx.i18n.t('start'));
             await ctx.reply(ctx.i18n.t('askName'));
           });
           index % 2 === 0 && range.row();
@@ -100,14 +100,13 @@ export class globalComposer extends BaseComposer {
         {
           type: 'photo',
           media: new InputFile('./dist/public/assets/start_ru.png'),
-          caption: i18n.t('ru', 'start') + '\n\n' + i18n.t('uz', 'start') + '\n\n',
         },
         {
           type: 'photo',
           media: new InputFile('./dist/public/assets/start_uz.png'),
         },
       ]);
-      await ctx.reply(ctx.i18n.t('chooseLang'), {
+      await ctx.reply(i18n.t('ru', 'start') + '\n\n' + i18n.t('uz', 'start') + '\n\n' + ctx.i18n.t('chooseLang'), {
         reply_markup: this.menu,
       });
     }
