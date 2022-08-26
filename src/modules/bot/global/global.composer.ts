@@ -96,8 +96,18 @@ export class globalComposer extends BaseComposer {
     if (ctx.session.isRegistered) {
       await ctx.reply(ctx.i18n.t('mainMenu'), { reply_markup: mainKeyboard(ctx) });
     } else {
-      await ctx.replyWithPhoto(new InputFile('./dist/public/assets/henkel.png'), {
-        caption: i18n.t('ru', 'start') + '\n\n' + i18n.t('uz', 'start') + '\n\n' + ctx.i18n.t('chooseLang'),
+      await ctx.replyWithMediaGroup([
+        {
+          type: 'photo',
+          media: new InputFile('./dist/public/assets/start_ru.png'),
+          caption: i18n.t('ru', 'start') + '\n\n' + i18n.t('uz', 'start') + '\n\n',
+        },
+        {
+          type: 'photo',
+          media: new InputFile('./dist/public/assets/start_uz.png'),
+        },
+      ]);
+      await ctx.reply(ctx.i18n.t('chooseLang'), {
         reply_markup: this.menu,
       });
     }
