@@ -16,15 +16,17 @@
         :key="'win-' + index"
         :value="key"
       >
-        <v-textarea
-          v-for="(translationKey, key, index) in locale"
-          :key="'ta-' + index"
-          filled
-          :label="key"
-          v-model="locale[key]"
-          rows="2"
-          auto-grow
-        ></v-textarea>
+        <v-card-text>
+          <v-textarea
+            v-for="(translationKey, key, index) in locale"
+            :key="'ta-' + index"
+            filled
+            :label="key"
+            v-model="locale[key]"
+            rows="2"
+            auto-grow
+          ></v-textarea>
+        </v-card-text>
       </v-window-item>
     </v-window>
     <v-card-actions class="mt-auto">
