@@ -9,7 +9,7 @@ export class RetrieveUserDto {
     this.locale = user.locale;
     this.role = user.role;
     this.phone = user.phone;
-    this.createdAt = user.createdAt.toLocaleString();
+    this.createdAt = user.createdAt;
     this.promo = user.promo?.id.toString() || '';
     this.registered = user.registered;
     this.city = user.city?.id.toString() || '';
@@ -24,5 +24,5 @@ export class RetrieveUserDto {
   city: string;
   registered: boolean;
   promo: string;
-  createdAt: string;
+  createdAt: Date;
 }

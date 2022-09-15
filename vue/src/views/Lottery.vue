@@ -95,6 +95,8 @@ export default {
         {
           field: 'action',
           headerName: '',
+          filter: false,
+          sortable: false,
           cellRenderer: 'LotteryCell',
         },
       ],
@@ -125,11 +127,14 @@ export default {
             {
               field: 'action',
               headerName: '',
+              filter: false,
+              sortable: false,
               cellRenderer: 'LotteryWinnerCell',
             },
           ],
           defaultColDef: {
             sortable: true,
+            filter: true,
             flex: 1,
           },
         },
@@ -141,6 +146,7 @@ export default {
       defaultColDef: {
         sortable: true,
         flex: 1,
+        filter: true,
       },
       getRowId: function (params) {
         return params.data.id;

@@ -75,10 +75,17 @@ export default {
           sortable: true,
         },
 
-        { field: 'createdAt', headerName: 'Дата регистрации', sortable: true },
+        {
+          field: 'createdAt',
+          headerName: 'Дата регистрации',
+          sortable: true,
+          valueFormatter: (params) => new Date(params.value).toLocaleString(),
+        },
         {
           field: 'action',
           headerName: '',
+          filter: false,
+          sortable: false,
           cellRenderer: 'UserCell',
         },
       ],
@@ -87,6 +94,7 @@ export default {
       defaultColDef: {
         sortable: true,
         flex: 1,
+        filter: true,
       },
       getRowId: function (params) {
         return params.data.id;

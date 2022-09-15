@@ -9,7 +9,7 @@ export class RetrieveCheckDto {
     this.phone = check.user.phone;
     this.checkPath = check.path;
     this.locale = check.user?.locale || '';
-    this.createdAt = check.createdAt?.toLocaleString() || '';
+    this.createdAt = check.createdAt;
     this.status = check.status?.id.toString() || '';
   }
   id: string;
@@ -18,6 +18,6 @@ export class RetrieveCheckDto {
   phone: string;
   status: string;
   locale: string;
-  createdAt: string;
+  createdAt: Date;
   checkPath: string;
 }
