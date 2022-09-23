@@ -13,7 +13,7 @@
     "week": "Hafta",
     "winners": "🏆G'oliblar",
     "winnersOfWeek": "Hafta ${date} go'liblari",
-    "PRIZE_WEEKLY": "Tabriklaymiz, sizning ${check_id} unikal raqami bo'yicha chekingiz har kunlik mukofot g'olibi bo'ldi. Sizning ma'lumotlaringizni aniqlash uchun operatorimiz siz bilan 2 kun ichida bog'lanadi🎉. ",
+    "PRIZE_WEEKLY": "Tabriklaymiz, sizning ${check_id} unikal raqami bo'yicha chekingiz har haftalik mukofot g'olibi bo'ldi. Sizning ma'lumotlaringizni aniqlash uchun operatorimiz siz bilan 2 kun ichida bog'lanadi🎉.",
     "STATUS_APPROVED_1": "Tabriklaymiz, Sizning unikal: ${check_id}  raqam bo'yicha chekingiz qa'bul qilindi va sovrinlar o'yinida ishtirok etmoqda.  ",
     "STATUS_APPROVED_2": "Rahmat, Sizning chekingiz qabul qilindi va qayta ishlashga yuborildi!  \nChekingizning unikal raqami: ${check_id}\nG'olib bo'lgan holatda xabarlarni o'tkazib yubormaslik uchun botdan keladigan xabarlarni o'chirmang.",
     "REJECT_REASON_1": "Sizning  ${check_id}  unikal raqam bo'yicha chekingiz qa'bul qilinmadi. \nYuborilgan chek avval yuklangan. Iltimos, \"Korzinka\" do'konlaridan 17 000 so'm va undan ortiq miqdorda bo'lgan \"RASTISHKA\" mahsulotini xariq qilganingiz to'g'risida aktual chekni yuklang. \nRahmat!",
