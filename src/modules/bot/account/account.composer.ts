@@ -90,19 +90,20 @@ export class AccountComposer extends BaseComposer {
 
   @On(':photo', 'filter')
   photo = async (ctx: BotContext) => {
-    const path = await this.accountService.downloadFile(ctx);
-    const check = await this.accountService.registerCheck(ctx.from.id, path);
-    if (check.checkCount === 1) {
-      const url = this.AppConfigService.get('url');
-      await ctx.reply(
-        ctx.i18n.t('checkAccepted', { check_id: check.fancyId }) +
-          '\n\n' +
-          ctx.i18n.t('guranteePrize', { link: url + `assets/prize.pdf` }),
-        { parse_mode: 'HTML' },
-      );
-    } else {
-      await ctx.reply(ctx.i18n.t('checkAccepted', { check_id: check.fancyId }));
-    }
+    await ctx.reply(ctx.i18n.t('promoEnded'));
+    // const path = await this.accountService.downloadFile(ctx);
+    // const check = await this.accountService.registerCheck(ctx.from.id, path);
+    // if (check.checkCount === 1) {
+    //   const url = this.AppConfigService.get('url');
+    //   await ctx.reply(
+    //     ctx.i18n.t('checkAccepted', { check_id: check.fancyId }) +
+    //       '\n\n' +
+    //       ctx.i18n.t('guranteePrize', { link: url + `assets/prize.pdf` }),
+    //     { parse_mode: 'HTML' },
+    //   );
+    // } else {
+    //   await ctx.reply(ctx.i18n.t('checkAccepted', { check_id: check.fancyId }));
+    // }
     // await ctx.reply(ctx.i18n.t('promoEnded'));
   };
 }
