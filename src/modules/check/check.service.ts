@@ -17,7 +17,7 @@ export class CheckService {
 
   async findAll(): Promise<RetrieveCheckDto[]> {
     return (
-      await this.em.find(Check, {}, { populate: ['user', 'status.translation.values', 'status.comment.values'] })
+      await this.em.find(Check, {}, { populate: ['user.city', 'status.translation.values', 'status.comment.values'] })
     ).map((check) => new RetrieveCheckDto(check));
   }
 

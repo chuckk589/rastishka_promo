@@ -62,6 +62,13 @@ export default {
           valueFormatter: (params) => new Date(params.value).toLocaleString(),
         },
         {
+          field: 'city',
+          headerName: 'Город',
+          valueFormatter: (params) =>
+            this.$ctable.cities.find((c) => c.value == params.value)?.title,
+          hide: true,
+        },
+        {
           field: 'action',
           headerName: '',
           filter: false,

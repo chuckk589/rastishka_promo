@@ -10,6 +10,7 @@ export class RetrieveCheckDto {
     this.checkPath = check.path;
     this.locale = check.user?.locale || '';
     this.createdAt = check.createdAt;
+    this.city = check.user?.city?.id.toString() || '';
     this.status = check.status?.id.toString() || '';
   }
   id: string;
@@ -20,4 +21,5 @@ export class RetrieveCheckDto {
   locale: string;
   createdAt: Date;
   checkPath: string;
+  city: string;
 }

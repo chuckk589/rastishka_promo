@@ -131,7 +131,7 @@ export class LotteryService {
         Lottery,
         {},
         {
-          populate: ['status.translation.values', 'prize.translation.values', 'winners.check.user'],
+          populate: ['status.translation.values', 'prize.translation.values', 'winners.check.user.city'],
         },
       )
     ).map((lottery) => new RetrieveLotteryDto(lottery));
@@ -143,7 +143,7 @@ export class LotteryService {
     lottery.start = updateLotteryDto.start;
     lottery.end = updateLotteryDto.end;
     await this.em.persistAndFlush(lottery);
-    await wrap(lottery).init(true, ['winners.check.user']);
+    await wrap(lottery).init(true, ['winners.check.user.city']);
     return new RetrieveLotteryDto(lottery);
   }
 

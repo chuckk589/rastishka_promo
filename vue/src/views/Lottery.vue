@@ -125,6 +125,13 @@ export default {
             { field: 'credentials', headerName: 'Имя' },
             { field: 'phone', headerName: 'Телефон' },
             {
+              field: 'city',
+              headerName: 'Город',
+              valueFormatter: (params) =>
+                this.$ctable.cities.find((c) => c.value == params.value)?.title,
+              hide: true,
+            },
+            {
               field: 'action',
               headerName: '',
               filter: false,
@@ -279,22 +286,25 @@ export default {
         sum[cur] = this.getValueFormatter(cur);
         return sum;
       }, {});
-      const masterFormatters = ['confirmed', 'notified'].reduce((sum, cur) => {
-        sum[cur] = this.getValueFormatterMaster(cur);
-        return sum;
-      }, {});
+      const masterFormatters = ['confirmed', 'notified', 'city'].reduce(
+        (sum, cur) => {
+          sum[cur] = this.getValueFormatterMaster(cur);
+          return sum;
+        },
+        {},
+      );
       const result = [
         {
           name: 'Export CSV',
           action: () => {
             const csv =
-              'Id розыгрыша, Дата, Приз, Подтвержден, Уведомлен, Id чека, Имя, Номер\n' +
+              'Id розыгрыша, Дата, Приз, Подтвержден, Уведомлен, Id чека, Имя, Номер, Город\n' +
               this.rowData.reduce((sum, cur) => {
                 // eslint-disable-next-line prettier/prettier
                 const header = `${cur.id},${gridFormatters.createdAt({ value: cur.createdAt })},${gridFormatters.prize({ value: cur.prize })}`;
                 cur.winners.forEach((w) => {
                   // eslint-disable-next-line prettier/prettier
-                  sum = sum + header +`,${masterFormatters.confirmed({ value: w.confirmed })},${masterFormatters.notified({ value: w.notified })},${w.fancyId},${w.credentials},${w.phone}\n`;
+                  sum = sum + header +`,${masterFormatters.confirmed({ value: w.confirmed })},${masterFormatters.notified({ value: w.notified })},${w.fancyId},${w.credentials},${w.phone},${masterFormatters.city({value:w.city})}\n`;
                 });
                 return sum;
               }, '');

@@ -36,6 +36,7 @@ export class RetrieveWinnerDto {
     this.phone = winner.check?.user?.phone || '';
     this.checkPath = winner.check?.path || '';
     this.primary = winner.primary;
+    this.city = winner.check?.user?.city?.id.toString() || '';
     // this.prize = winner.prize_value?.qr_payload || '';
     // this.prizeId = winner.prize_value?.id || null;
   }
@@ -48,5 +49,6 @@ export class RetrieveWinnerDto {
   phone: string;
   checkPath: string;
   prize: string;
+  city: string;
   prizeId: number;
 }
